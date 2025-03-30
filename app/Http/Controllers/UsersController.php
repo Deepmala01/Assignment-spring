@@ -80,7 +80,7 @@ class UsersController extends Controller
             return response()->json([
                 'error' => $validator->errors(),
                 'message' => 'All fields are required',
-            ], 422);
+            ], 200);
         }
         
         if(users::where('id', $id)->exists()){
@@ -106,7 +106,7 @@ class UsersController extends Controller
         if(users::where('id', $id)->exists()){
         $user = users::find($id);
         $user->delete();
-        return response()->json(['message' => 'User deleted successfully'], 202);
+        return response()->json(['message' => 'User deleted successfully'], 200);
     }  else {
             return response()->json(['message' => 'User not found'], 404);
         }
