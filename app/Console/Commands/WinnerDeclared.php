@@ -15,7 +15,7 @@ class WinnerDeclared extends Command
      *
      * @var string
      */
-    protected $signature = 'app:winnerDeclare';
+    protected $signature = 'app:winnerDeclared';
 
     /**
      * The console command description.
@@ -29,7 +29,7 @@ class WinnerDeclared extends Command
      */
     public function handle()
     {
-    info("Cron Job running at ". now());
+    $this->info("Cron Job running at ". now());
     $highestScore = users::max('points');
     $usersWithHighestScore = users::where('points', $highestScore)->count();
     if ($usersWithHighestScore == 1) {
